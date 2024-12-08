@@ -1,0 +1,289 @@
+{
+	"info": {
+		"_postman_id": "717948a0-1dcc-4264-9438-f061194bff91",
+		"name": "KTP System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8740062",
+		"_collection_link": "https://lively-sunset-967866.postman.co/workspace/skid_loading~aa22912b-fd9a-47a8-b825-154dfc123cfd/collection/8740062-717948a0-1dcc-4264-9438-f061194bff91?action=share&source=collection_link&creator=8740062"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"user@mail.com\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get KTP List Request",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJ0QG1haWwuY29tIiwicm9sZSI6InJ0IiwiZXhwIjoxNzMzNjk4NzYwfQ.8ZE-ouWQ0RT4yhNtPt99YjLIygEN2YfpYXldA3qrKhk"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/api/list-permohonan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"list-permohonan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get KTP Request",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczMzc0NTQ0N30.fgZJnEyaHU2sPMIZ4t2pZ5ogNhgzezIRR8p85wjra9Q"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/api/permohonan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"permohonan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get KK",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczMzY5NzUwM30.tH_V5OiC8S4gwCnPQh4SStCpYgVzv0LcLPX7z8WQFnc"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/api/kk/1234567890",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"kk",
+						"1234567890"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get KTP",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczMzcwMDUxMH0.63PHSDtyhNvTn3LnI_3y8yGvpumkbZcuAl3lHCVV6IY"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/api/ktp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"ktp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create KTP Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczMzYyMzYxMX0.aKMyeP7sJsgAK8J0tdl4nk6aBQ6ChuV__AFVxErJds0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"NamaWarga\": \"John Doe\",\n  \"AlamatWarga\": \"123 Main St\",\n  \"NoKK\": \"1234567890\",\n  \"TglPengajuan\": \"2024-12-06\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/permohonan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"permohonan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJ0QG1haWwuY29tIiwicm9sZSI6InJ0IiwiZXhwIjoxNzMzNjk4NzYwfQ.8ZE-ouWQ0RT4yhNtPt99YjLIygEN2YfpYXldA3qrKhk"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"reqID\": 4,\n    \"isVerified\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/verify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"verify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Request Tracker",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczMzYyMzYxMX0.aKMyeP7sJsgAK8J0tdl4nk6aBQ6ChuV__AFVxErJds0"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/api/tracker",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"tracker"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create KTP and Laporan",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImV4cCI6MTczMzY5OTk5Nn0.PuvCJ_VjqIZHEyrCmG9D1FKZVfvEVbJWgKQIAecJFaM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"namaLengkap\": \"John Doe\",\n    \"tanggalLahir\": \"2000-01-01\",\n    \"alamat\": \"123 Main St\",\n    \"jenisKelamin\": \"Laki-laki\",\n    \"agama\": \"Islam\",\n    \"statusPerkawinan\": \"Belum Kawin\",\n    \"email\": \"user@mail.com\",\n    \"reqID\": 4,\n    \"placeCode\": \"320301\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/ktp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"ktp"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
