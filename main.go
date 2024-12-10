@@ -26,6 +26,7 @@ func main() {
 	r := gin.Default()
 
 	r.POST("/login", func(c *gin.Context) { handlers.Login(c, db) })
+	r.POST("/register", func(c *gin.Context) { handlers.CreateUser(c, db) })
 
 	api := r.Group("/api")
 	{
@@ -48,11 +49,11 @@ func main() {
 
 func SeedUsers(db *gorm.DB) {
 	users := []models.User{
-		{ID: "1", Name: "pak rt", Email: "rt@mail.com", Password: "123456", Role: "rt"},
-		{ID: "2", Name: "pak w2", Email: "rw@mail.com", Password: "123456", Role: "rw"},
-		{ID: "3", Name: "pak lurah", Email: "kelurahan@mail.com", Password: "123456", Role: "kelurahan"},
-		{ID: "4", Name: "pak camat", Email: "kecamatan@mail.com", Password: "123456", Role: "kecamatan"},
-		{ID: "5", Name: "atang", Email: "user@mail.com", Password: "123456", Role: "user"},
+		{Name: "pak rt", Email: "rt@mail.com", Password: "123456", Role: "rt"},
+		{Name: "pak w2", Email: "rw@mail.com", Password: "123456", Role: "rw"},
+		{Name: "pak lurah", Email: "kelurahan@mail.com", Password: "123456", Role: "kelurahan"},
+		{Name: "pak camat", Email: "kecamatan@mail.com", Password: "123456", Role: "kecamatan"},
+		{Name: "atang", Email: "user@mail.com", Password: "123456", Role: "user"},
 	}
 
 	for _, user := range users {

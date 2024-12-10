@@ -16,3 +16,9 @@ type CreateKTPReq struct {
 	ReqID            uint   `json:"reqID"`
 	PlaceCode        string `json:"placeCode"`
 }
+
+type CreateUserReq struct {
+	Name     string `json:"name"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}

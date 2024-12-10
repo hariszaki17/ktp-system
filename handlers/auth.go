@@ -55,6 +55,56 @@ func Login(c *gin.Context, db *gorm.DB) {
 	c.JSON(http.StatusOK, gin.H{"token": tokenString, "role": user.Role})
 }
 
+func CreateUser(c *gin.Context, db *gorm.DB) {
+	var userReq models.CreateUserReq
+	if err := c.BindJSON(&userReq); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request"})
+		return
+	}
+
+	var user models.User
+	if err := db.Where("email = ?", userReq.Email).First(&user).Error; err != nil {
+		if err != gorm.ErrRecordNotFound {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+	}
+
+	if user.ID != 0 {
+		c.JSON(http.StatusConflict, gin.H{"error": "User already created"})
+		return
+	}
+
+	newUser := &models.User{
+		Name:     userReq.Name,
+		Email:    userReq.Email,
+		Password: userReq.Password,
+		Role:     "user",
+	}
+	if err := db.Create(newUser).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	expirationTime := time.Now().Add(24 * time.Hour)
+	claims := &Claims{
+		Email: user.Email,
+		Role:  user.Role,
+		StandardClaims: jwt.StandardClaims{
+			ExpiresAt: expirationTime.Unix(),
+		},
+	}
+
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	tokenString, err := token.SignedString(jwtKey)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not generate token"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"token": tokenString, "user": newUser})
+}
+
 func AuthMiddleware(role string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		tokenString := c.GetHeader("Authorization")

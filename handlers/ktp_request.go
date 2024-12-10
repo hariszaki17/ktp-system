@@ -113,7 +113,6 @@ func CreateKTPRequest(c *gin.Context, db *gorm.DB) {
 
 	var user models.User
 	if err := db.Where("email = ?", email).First(&user).Error; err != nil {
-		fmt.Println(email, "---", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
